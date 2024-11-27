@@ -1,25 +1,11 @@
-import React, {useState} from "react"; 
+import React from "react";
 
-const Counter = () => {
-    const [count, setCount] = useState(0);
-
-    const increment = () => {
-        setCount(count + 1);
-    }
-
-    const decrement = () => {
-        setCount(count - 1);
-    }
-
-    return (
-        <div>
-            <button onClick = {increment}>+</button>
-            <span>{count}</span>
-            <button onClick = {decrement}>-</button>
-        </div>
-    )
-};
-
-
+const Counter = ({ index, count, setCount }) => (
+    <div>
+        <button onClick={() => setCount(index, count + 1)}>+</button>
+        {count}
+        <button onClick={() => setCount(index, count - 1)}>-</button>
+    </div>
+);
 
 export default Counter;
