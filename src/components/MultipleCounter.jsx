@@ -1,24 +1,28 @@
-import React, { useState } from "react";
-import CounterGroupGenerator from "./CounterGroupGenerator";
+import { useEffect, useState } from "react";
 import CounterGroup from "./CounterGroup";
-
-
+import CounterGroupGenerator from "./CounterGroupGenerator";
+import CountersSum from "./CounterSum";
 
 const MultipleCounter = () => {
-    const [size, setSize] = useState();
+    const [size, setSize] = useState(0);
+    const [sizeArray, setSizeArray] = useState(Array.from({ length: size }));
+    const [Counts, setCounts] = useState([]);
 
-
-    const resetCounters = () => {
-    };
+    useEffect(() => {
+        setSizeArray(Array.from({ length: size }));
+        setCounts(Array.from({ length: size }).fill(0));
+    }, [size]);
 
     return (
         <div>
-            <CounterGroupGenerator
+            <CounterGroupGenerator setGlobalSize={setSize} />
+            <CountersSum Counts={Counts} />
+            <CounterGroup
                 size={size}
-                setSize={setSize}
-                resetCounters={resetCounters}
+                sizeArray={sizeArray}
+                Counts={Counts}
+                setCounts={setCounts}
             />
-            <CounterGroup size={size} />
         </div>
     );
 };
