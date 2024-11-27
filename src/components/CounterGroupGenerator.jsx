@@ -1,15 +1,23 @@
-const CounterGroupGenerator = ({ size, setSize, resetCounters }) => {
+import { useState } from "react";
+
+const CounterGroupGenerator = ({ setGlobalSize }) => {
+    const [size, setSize] = useState(0);
 
     const handleSizeChange = (e) => {
-        const newSize = Math.min(Math.max(Number(e.target.value), 0), 20);
-        setSize(newSize);
-        resetCounters();
+        const value = Math.max(0, Math.min(20, Number(e.target.value) || 0));
+        setSize(value);
+        setGlobalSize(value);
+    };
+
+    const resetCounters = () => {
+        setSize(0);
+        setGlobalSize(0);
     };
 
     return (
-        <div>
+        <div className="counter-group-generator">
             <label>
-                Size:{" "}
+                <span>Size:</span>
                 <input
                     type="number"
                     onChange={handleSizeChange}
