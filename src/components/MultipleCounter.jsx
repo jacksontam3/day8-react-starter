@@ -4,25 +4,25 @@ import CounterGroupGenerator from "./CounterGroupGenerator";
 import CountersSum from "./CounterSum";
 
 const MultipleCounter = () => {
-    const [size, setSize] = useState(0);
-    const [sizeArray, setSizeArray] = useState(Array.from({ length: size }));
+    const [globalSize, setGlobalSize] = useState(0);
+    const [sizeArray, setSizeArray] = useState(Array.from({ length: globalSize }));
     const [Counts, setCounts] = useState([]);
 
     useEffect(() => {
-        setSizeArray(Array.from({ length: size }));
-        setCounts(Array.from({ length: size }).fill(0));
-    }, [size]);
+        setSizeArray(Array.from({ length: globalSize }));
+        setCounts(Array.from({ length: globalSize }).fill(0));
+    }, [globalSize]);
 
     const resetCounts = () => {
-        setCounts(Array.from({ length: size }).fill(0));
+        setCounts(Array.from({ length: globalSize }).fill(0));
     };
 
     return (
         <div>
-            <CounterGroupGenerator setGlobalSize={setSize} resetCounts={resetCounts} />
+            <CounterGroupGenerator setGlobalSize={setGlobalSize} resetCounts={resetCounts} />
             <CountersSum Counts={Counts} />
             <CounterGroup
-                size={size}
+                size={globalSize}
                 sizeArray={sizeArray}
                 Counts={Counts}
                 setCounts={setCounts}
