@@ -13,9 +13,13 @@ const MultipleCounter = () => {
         setCounts(Array.from({ length: size }).fill(0));
     }, [size]);
 
+    const resetCounts = () => {
+        setCounts(Array.from({ length: size }).fill(0));
+    };
+
     return (
         <div>
-            <CounterGroupGenerator setGlobalSize={setSize} />
+            <CounterGroupGenerator setGlobalSize={setSize} resetCounts={resetCounts} />
             <CountersSum Counts={Counts} />
             <CounterGroup
                 size={size}

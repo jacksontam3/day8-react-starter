@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const CounterGroupGenerator = ({ setGlobalSize }) => {
+const CounterGroupGenerator = ({ setGlobalSize, resetCounts }) => {
     const [size, setSize] = useState(0);
 
     const handleSizeChange = (e) => {
@@ -9,9 +9,8 @@ const CounterGroupGenerator = ({ setGlobalSize }) => {
         setGlobalSize(value);
     };
 
-    const resetCounters = () => {
-        setSize(0);
-        setGlobalSize(0);
+    const handleResetCounters = () => {
+        resetCounts();
     };
 
     return (
@@ -25,7 +24,7 @@ const CounterGroupGenerator = ({ setGlobalSize }) => {
                     max="20"
                 />
             </label>
-            <button onClick={resetCounters}>Reset</button>
+            <button onClick={handleResetCounters}>Reset</button>
         </div>
     );
 };
