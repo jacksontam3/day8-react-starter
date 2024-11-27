@@ -1,0 +1,6 @@
+.ProductItem{
+    justify-content: center;
+    width: 200px;
+    display: flex;
+    margin: auto;
+}
