@@ -1,6 +1,8 @@
 const CounterGroupGenerator = ({ size, setSize, resetCounters }) => {
+
     const handleSizeChange = (e) => {
-        setSize(Number(e.target.value));
+        const newSize = Math.min(Math.max(Number(e.target.value), 0), 20);
+        setSize(newSize);
         resetCounters();
     };
 
@@ -10,9 +12,9 @@ const CounterGroupGenerator = ({ size, setSize, resetCounters }) => {
                 Size:{" "}
                 <input
                     type="number"
-                    value={size}
                     onChange={handleSizeChange}
                     min="0"
+                    max="20"
                 />
             </label>
             <button onClick={resetCounters}>Reset</button>
