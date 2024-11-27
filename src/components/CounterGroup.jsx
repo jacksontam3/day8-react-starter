@@ -1,4 +1,4 @@
-import Counter from "./counter";
+import Counter from "./Counter";
 const CounterGroup = ({ size}) => {
     return (
         <div>
